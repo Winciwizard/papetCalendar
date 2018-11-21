@@ -1,0 +1,15 @@
+<ion-grid>
+  <ion-row class="calendar-nav">
+    <ion-col class="calendar-nav-previous-month">
+      <ion-button shape="round" color="primary" fill="solid" (click) = "changeViewDate(-1, 'month')">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-col>
+    <ion-col class="month">{{viewDate.format('MMM YYYY') | uppercase }}</ion-col>
+    <ion-col class="calendar-nav-previous-month">
+      <ion-button shape="round" color="primary" fill="solid" (click) = "changeViewDate(1, 'month')">
+        <ion-icon name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
