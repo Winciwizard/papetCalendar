@@ -38,7 +38,6 @@ export class CalendarMonthComponent implements OnChanges {
             const week = this.tempArr.slice(j, j + 7);
             this.gridArr.push(week);
         }
-        console.log(this.gridArr);
     }
 
     ngOnChanges(changes: SimpleChanges): void {

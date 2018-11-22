@@ -11,7 +11,6 @@ export class CalendarDayComponent implements OnInit {
     constructor(private couchDb: CoucheDbService) { }
     // event: any;
     ngOnInit() {
-        console.log(this.day.value.format('Do'));
     }
     // getEvent(): void {
     //     this.couchDb.getEvent()

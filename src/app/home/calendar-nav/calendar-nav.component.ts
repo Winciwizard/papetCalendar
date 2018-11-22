@@ -25,6 +25,7 @@ export class CalendarNavComponent implements OnInit {
     changeViewDate(num, datePart) {
         this.momentDate.add(num, datePart);
         this.momentDate = moment(this.momentDate);
+        console.log(this.momentDate);
         this.navDate.emit(this.momentDate);
     }
 
