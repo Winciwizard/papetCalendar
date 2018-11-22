@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -6,13 +6,15 @@ import * as moment from 'moment';
     templateUrl: './calendar-month.component.html',
     styleUrls: ['./calendar-month.component.scss']
 })
-export class CalendarMonthComponent implements OnChanges{
+export class CalendarMonthComponent implements OnChanges {
     @Input() monthDate: any;
-    gridArr: Array<any> = [];
+    gridArr: Array<any>;
+    tempArr: Array<any>;
     constructor() {
     }
     makeGrid(date1: any) {
         this.gridArr = [];
+        this.tempArr = [];
 
         const firstDayDate = moment(date1).startOf('month');
         const initialEmptyCells = firstDayDate.weekday();
@@ -28,14 +30,20 @@ export class CalendarMonthComponent implements OnChanges{
                 obj.available = false;
             } else {
                 obj.value = i - initialEmptyCells + 1;
+                obj.available = true;
             }
-            this.gridArr.push(obj);
+            this.tempArr.push(obj);
         }
+        console.log(this.tempArr);
+        for (let j = 0; j < this.tempArr.length; j = j + 7) {
+            const week = this.tempArr.slice(j, j + 7);
+            console.log('test');
+            this.gridArr.push(week);
+        }
+        console.log(this.gridArr);
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        console.log('TEST');
-        console.log(changes.monthDate.currentValue);
         this.makeGrid(changes.monthDate.currentValue);
     }
 
