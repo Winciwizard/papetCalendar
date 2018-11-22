@@ -1,6 +1,6 @@
 <ion-row  *ngFor="let week of gridArr"class="calendar-body-row">
   <ion-col *ngFor="let day of week" class="calendar-date">
-    <div *ngIf="day.value !== 0" class="date-item">{{day.value.format('DD MMM YYYY')}}<app-calendar-day></app-calendar-day></div>
+    <div *ngIf="day.value !== 0" class="date-item"><app-calendar-day [day]="day"></app-calendar-day></div>
     <div *ngIf="day.value === 0" class="date-item"></div>
   </ion-col>
 </ion-row>
