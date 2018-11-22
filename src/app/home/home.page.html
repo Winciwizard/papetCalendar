@@ -6,7 +6,8 @@
 
 <ion-content>
     <ion-grid>
-        <app-calendar-nav></app-calendar-nav>
+        <app-calendar-nav (date)="sendDate($event)"></app-calendar-nav>
         <app-calendar-header></app-calendar-header>
+        <app-calendar-month [date]="naveDate"></app-calendar-month>
     </ion-grid>
 </ion-content>

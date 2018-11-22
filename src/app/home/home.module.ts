@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { CalendarNavComponent } from './calendar-nav/calendar-nav.component';
 import { CalendarHeaderComponent } from './calendar-header/calendar-header.component';
+import { CalendarMonthComponent } from './calendar-month/calendar-month.component';
+import { CalendarDayComponent } from './calendar-day/calendar-day.component';
 
 @NgModule({
   imports: [
@@ -14,7 +16,7 @@ import { CalendarHeaderComponent } from './calendar-header/calendar-header.compo
     FormsModule,
     RouterModule.forChild([{ path: '', component: HomePage }])
   ],
-  declarations: [HomePage, CalendarNavComponent, CalendarHeaderComponent]
+  declarations: [HomePage, CalendarNavComponent, CalendarHeaderComponent, CalendarMonthComponent, CalendarDayComponent]
 })
 export class HomePageModule implements OnInit {
     constructor() {}

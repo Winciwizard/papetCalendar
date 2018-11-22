@@ -5,4 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss']
 })
-export class HomePage {}
+export class HomePage {
+  naveDate: any;
+  sendDate(event) {
+    this.naveDate = event;
+  }
+}
