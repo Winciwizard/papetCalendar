@@ -18,14 +18,13 @@ export class CalendarNavComponent implements OnInit {
 
     ngOnInit() {
         moment.locale(this.localeString);
-        this.momentDate = moment();
+        this.momentDate = moment().set('date', 1);
         this.navDate.emit(this.momentDate);
     }
 
     changeViewDate(num, datePart) {
         this.momentDate.add(num, datePart);
         this.momentDate = moment(this.momentDate);
-        console.log(this.momentDate);
         this.navDate.emit(this.momentDate);
     }
 
