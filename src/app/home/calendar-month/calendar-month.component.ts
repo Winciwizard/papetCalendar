@@ -29,15 +29,13 @@ export class CalendarMonthComponent implements OnChanges {
                 obj.value = 0;
                 obj.available = false;
             } else {
-                obj.value = i - initialEmptyCells + 1;
+                obj.value = moment().set({'year': date1.get('year'), 'month': date1.get('month'), 'date': (i - initialEmptyCells + 1) });
                 obj.available = true;
             }
             this.tempArr.push(obj);
         }
-        console.log(this.tempArr);
         for (let j = 0; j < this.tempArr.length; j = j + 7) {
             const week = this.tempArr.slice(j, j + 7);
-            console.log('test');
             this.gridArr.push(week);
         }
         console.log(this.gridArr);

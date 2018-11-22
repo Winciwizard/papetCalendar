@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoucheDbService } from '../couche-db.service';
 
 @Component({
   selector: 'app-calendar-day',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalendarDayComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private couchDb: CoucheDbService) { }
+  event: any;
   ngOnInit() {
+      // this.getEvent();
+  }
+  getEvent(): void {
+      this.couchDb.getEvent()
+          .subscribe( event => this.event = event );
   }
 
 }
