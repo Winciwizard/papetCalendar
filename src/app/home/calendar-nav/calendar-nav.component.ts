@@ -1,30 +1,31 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import * as moment from 'moment';
 
 
 @Component({
-  selector: 'app-calendar-nav',
-  templateUrl: './calendar-nav.component.html',
-  styleUrls: ['./calendar-nav.component.scss']
+    selector: 'app-calendar-nav',
+    templateUrl: './calendar-nav.component.html',
+    styleUrls: ['./calendar-nav.component.scss']
 })
 export class CalendarNavComponent implements OnInit {
 
-  localeString = 'fr';
-  naveDate: any;
-  @Output() date = new EventEmitter<any>();
-  constructor() {
-  }
+    localeString = 'fr';
+    momentDate: any;
+    @Output() navDate = new EventEmitter<any>();
 
-  ngOnInit() {
-      moment.locale(this.localeString);
-      this.naveDate = moment();
-      this.date.emit(this.naveDate);
-  }
+    constructor() {
+    }
+
+    ngOnInit() {
+        moment.locale(this.localeString);
+        this.momentDate = moment();
+        this.navDate.emit(this.momentDate);
+    }
 
     changeViewDate(num, datePart) {
-        this.naveDate.add(num, datePart);
-        // console.log(this.naveDate);
-        this.date.emit(this.naveDate);
+        this.momentDate.add(num, datePart);
+        this.momentDate = moment(this.momentDate);
+        this.navDate.emit(this.momentDate);
     }
 
 }

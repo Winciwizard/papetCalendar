@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
-  naveDate: any;
+  date: any;
   sendDate(event) {
-    this.naveDate = event;
+    this.date = event;
   }
 }

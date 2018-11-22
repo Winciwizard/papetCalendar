@@ -1,4 +1,4 @@
-import {Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
@@ -6,24 +6,11 @@ import * as moment from 'moment';
     templateUrl: './calendar-month.component.html',
     styleUrls: ['./calendar-month.component.scss']
 })
-export class CalendarMonthComponent implements OnInit {
-
+export class CalendarMonthComponent implements OnChanges{
+    @Input() monthDate: any;
+    gridArr: Array<any> = [];
     constructor() {
     }
-    private _date;
-    @Input() set date(val: any) {
-        this._date = val;
-        console.log(val);
-        this.makeGrid(val);
-    }
-    gridArr: Array<any> = [];
-    get date(): any {
-        return this._date;
-    }
-
-    ngOnInit() {
-    }
-
     makeGrid(date1: any) {
         this.gridArr = [];
 
@@ -44,6 +31,12 @@ export class CalendarMonthComponent implements OnInit {
             }
             this.gridArr.push(obj);
         }
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log('TEST');
+        console.log(changes.monthDate.currentValue);
+        this.makeGrid(changes.monthDate.currentValue);
     }
 
 }
