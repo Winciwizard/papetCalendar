@@ -5,10 +5,10 @@ import { Observable} from 'rxjs/internal/Observable';
 @Injectable()
 export class CoucheDbService {
 
-    url = 'http://papetagendazv.alwaysdata.net/data/agendapapet_table/b27f41d036d501f72554d84f861da747';
+    urlEvents = 'http://papetagendazv.alwaysdata.net/data/papetagendazv_agenda/_all_docs?include_docs=true';
     constructor(private http: HttpClient) { }
 
-    getEvent(): Observable<any> {
-        return this.http.get<any>(this.url);
+    getEvents(): Observable<any> {
+        return this.http.get<any>(this.urlEvents);
     }
 }

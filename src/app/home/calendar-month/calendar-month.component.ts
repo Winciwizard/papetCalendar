@@ -1,5 +1,6 @@
 import {Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as moment from 'moment';
+import {CoucheDbService} from '../couche-db.service';
 
 @Component({
     selector: 'app-calendar-month',
@@ -10,12 +11,11 @@ export class CalendarMonthComponent implements OnChanges {
     @Input() monthDate: any;
     gridArr: Array<any>;
     tempArr: Array<any>;
-    constructor() {
+    constructor(private couchDb: CoucheDbService) {
     }
-    makeGrid(date1: any) {
+    makeGrid(date1: any, events: any) {
         this.gridArr = [];
         this.tempArr = [];
-
         const firstDayDate = moment(date1).startOf('month');
         const initialEmptyCells = firstDayDate.weekday();
         const lastDayDate = moment(date1).endOf('month');
@@ -27,10 +27,11 @@ export class CalendarMonthComponent implements OnChanges {
             const obj: any = {};
             if (i < initialEmptyCells || i > initialEmptyCells + daysInMonth - 1) {
                 obj.value = 0;
-                obj.available = false;
+                obj.events = null;
             } else {
                 obj.value = moment().set({'year': date1.get('year'), 'month': date1.get('month'), 'date': (i - initialEmptyCells + 1) });
-                obj.available = true;
+                obj.events = null;
+                this.getEventByDate(events, obj);
             }
             this.tempArr.push(obj);
         }
@@ -41,7 +42,16 @@ export class CalendarMonthComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        this.makeGrid(changes.monthDate.currentValue);
+        this.couchDb.getEvents()
+            .subscribe(events => {
+                this.makeGrid(changes.monthDate.currentValue, events.rows);
+            });
     }
-
+    getEventByDate(events, obj) {
+        events.forEach(function (event) {
+            if (moment(event.doc.start_time).format('YYYY-MM-DD') === obj.value.format('YYYY-MM-DD') ) {
+                obj.events = event.doc;
+            }
+        });
+    }
 }

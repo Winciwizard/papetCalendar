@@ -1,7 +1,31 @@
-.day-loc, .day-desc {
+.day {
+  width: 100%;
+  margin : auto;
+  height: 50px;
+}
+
+.day-value {
+  font-size: 16px;
+}
+
+.day-value {
+  font-weight: bold;
+}
+
+.day-event, .day-title, .day-desc {
+  word-wrap:break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background: #fff5cc;
+  color: #997a00;
+}
+
+.day-title {
+  font-weight: bold;
   font-size: 12px;
 }
 
-.day-loc {
-  font-weight: bold;
+.day-desc{
+  font-size: 12px;
 }
