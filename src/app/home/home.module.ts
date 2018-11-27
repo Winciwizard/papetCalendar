@@ -8,15 +8,18 @@ import { CalendarNavComponent } from './calendar-nav/calendar-nav.component';
 import { CalendarHeaderComponent } from './calendar-header/calendar-header.component';
 import { CalendarMonthComponent } from './calendar-month/calendar-month.component';
 import { CalendarDayComponent } from './calendar-day/calendar-day.component';
+import { CalendarEventPageModule} from './calendar-event/calendar-event.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: HomePage }])
+    CalendarEventPageModule,
+    RouterModule.forChild([{ path: '', component: HomePage }], )
   ],
-  declarations: [HomePage, CalendarNavComponent, CalendarHeaderComponent, CalendarMonthComponent, CalendarDayComponent]
+  declarations: [HomePage, CalendarNavComponent, CalendarHeaderComponent, CalendarMonthComponent, CalendarDayComponent],
+
 })
 export class HomePageModule implements OnInit {
     constructor() {}

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';
 import { CoucheDbService} from './home/couche-db.service';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
