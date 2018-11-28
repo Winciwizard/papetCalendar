@@ -2,6 +2,7 @@
     <ion-toolbar>
         <ion-button (click) ="closeModal()">Back</ion-button>
         <ion-title>{{day.events.title}}</ion-title>
+
     </ion-toolbar>
 </ion-header>
 
@@ -18,5 +19,5 @@
     <div class="loc">
         <span>Lieu : </span>{{day.events.location}}
     </div>
-    <ion-button></ion-button>
+    <ion-button (click) ="deleteEvent()" color="danger">Delete</ion-button>
 </ion-content>

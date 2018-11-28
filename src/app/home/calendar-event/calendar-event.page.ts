@@ -9,7 +9,7 @@ import { CoucheDbService} from '../couche-db.service';
   styleUrls: ['./calendar-event.page.scss'],
 })
 export class CalendarEventPage implements OnInit {
-    @Input day: any;
+    @Input() day: any;
   constructor(private modalController: ModalController, private couchDB: CoucheDbService) { }
 
   ngOnInit() {
