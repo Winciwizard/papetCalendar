@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ModalController} from '@ionic/angular';
+import { CoucheDbService} from '../couche-db.service';
 
 
 @Component({
@@ -8,13 +9,18 @@ import { ModalController} from '@ionic/angular';
   styleUrls: ['./calendar-event.page.scss'],
 })
 export class CalendarEventPage implements OnInit {
-
-  constructor(private modalController: ModalController) { }
+    @Input day: any;
+  constructor(private modalController: ModalController, private couchDB: CoucheDbService) { }
 
   ngOnInit() {
   }
 
     closeModal() {
         this.modalController.dismiss();
+    }
+    deleteEvent() {
+      this.couchDB.deleteEvent(this.day.events)
+          .subscribe();
+      this.closeModal();
     }
 }

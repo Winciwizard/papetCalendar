@@ -3,5 +3,6 @@
     <div *ngIf="day.events !== null" class="day-event">
         <div class="day-title" (click)="eventModal()">{{day.events.title | uppercase}}</div>
         <div class="day-desc">{{day.events.description}}</div>
+
     </div>
 </div>
