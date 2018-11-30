@@ -28,4 +28,7 @@ export class CoucheDbService {
         const delUrl = this.baseUrl + event._id + '?rev=' + event._rev;
         return this.http.delete<Response>(delUrl, httpOptions);
     }
+    addEvent(event: any): Observable<Response> {
+        return this.http.post<Response>(this.baseUrl, event, httpOptions);
+    }
 }

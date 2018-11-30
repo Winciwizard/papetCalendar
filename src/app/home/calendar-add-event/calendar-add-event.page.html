@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>calendar-addEvent</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form (ngSubmit)="addEvent()">
+    <ion-item>
+      <ion-label>Titre :</ion-label>
+      <ion-input type="text" [(ngModel)]="event.title" name="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description :</ion-label>
+      <ion-textarea [(ngModel)]="event.description" name="description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lieux :</ion-label>
+      <ion-textarea [(ngModel)]="event.location" name="location"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date et heure de début :</ion-label>
+      <ion-textarea display-format="YYYY-MM-DD | HH:mm"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date et heure de fin :</ion-label>
+      <ion-datetime display-format="YYYY-MM-DD | HH:mm" [(ngModel)]="end_time"></ion-datetime>
+    </ion-item>
+    <button ion-button type="submit" block>Ajouter</button>
+  </form>
+</ion-content>
