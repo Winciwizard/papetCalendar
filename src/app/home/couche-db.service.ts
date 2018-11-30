@@ -14,8 +14,8 @@ const httpOptions = {
 @Injectable()
 export class CoucheDbService {
 
-    urlEvents = 'http://papetagendazv.alwaysdata.net/data/papetagendazv_agenda/_all_docs?include_docs=true';
-    baseUrl = 'http://papetagendazv.alwaysdata.net/data/papetagendazv_agenda/';
+    urlEvents = 'https://papetagendazv.alwaysdata.net/data/papetagendazv_agenda/_all_docs?include_docs=true';
+    baseUrl = 'https://papetagendazv.alwaysdata.net/data/papetagendazv_agenda/';
 
     constructor(private http: HttpClient) {
     }
