@@ -11,7 +11,7 @@ export class CalendarMonthComponent implements OnChanges {
     @Input() monthDate: any;
     gridArr: Array<any>;
     tempArr: Array<any>;
-    constructor(private couchDb: CoucheDbService) {
+    constructor(private couchDb: CoucheDbService, translator: Translator) {
     }
     makeGrid(date1: any, events: any) {
         this.gridArr = [];

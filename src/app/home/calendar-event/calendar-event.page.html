@@ -1,15 +1,21 @@
 <ion-header>
     <ion-toolbar>
         <ion-button (click) ="closeModal()">Back</ion-button>
-        <ion-title>{{day.events.title}}</ion-title>
+        <ion-item>
+            <ion-title>{{day.events.title}}</ion-title>
+        </ion-item>
+
 
     </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <div class="desc">
-        {{day.events.description}}
-    </div>
+    <ion-item>
+        <ion-textarea [(ngModel)]="day.events.description" name="description" class="desc">{{day.events.description}}</ion-textarea>
+    </ion-item>
+    <!--<div class="desc">-->
+        <!--{{day.events.description}}-->
+    <!--</div>-->
     <div class="time">
         <span>Début: </span>{{day.events.start_time | date:'dd MMMM yyyy à HH:mm'}}
     </div>
